@@ -4,19 +4,19 @@ SHOW TABLES;
 
 DESCRIBE employees;
 
-#This is one I actually changed for this assignment
+
 SELECT * FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY  first_name;
-#and this
+#
 SELECT * FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY first_name, last_name;
-#and this
+
 SELECT * FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY last_name, first_name;
-#and this
+
 SELECT * FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 ORDER BY last_name DESC, first_name DESC;
@@ -43,7 +43,7 @@ SELECT * FROM employees
     ORDER BY birth_date ASC, hire_date DESC;
 
 #6
-SELECT datediff(CURDATE(), hire_date), hire_date, emp_no, birth_date, first_name, last_name, gender FROM employees
+SELECT datediff(CURDATE(), hire_date) AS 'Days Worked', hire_date, emp_no, birth_date, first_name, last_name, gender FROM employees
 WHERE (month(birth_date) = 12
     AND day(birth_date) = 25)
   AND year(hire_date) BETWEEN 1990 AND 1999;
