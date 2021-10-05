@@ -31,9 +31,38 @@ SELECT last_name FROM employees
 SELECT COUNT(*), last_name FROM employees
     WHERE last_name LIKE ('%q%')
     AND last_name NOT LIKE ('%qu%')
-    GROUP BY last_name;
+    GROUP BY last_name
+    ORDER BY COUNT(*);
 
 #7
 SELECT gender, COUNT(*) FROM employees
     WHERE first_name IN ('Irena', 'Vidya', 'Maya')
     GROUP BY gender;
+
+#================================= GROUP BY BONUSES
+# what are the names of the 10 most recently hired females in the company? the first 10? (no group by needed)
+SELECT first_name, last_name FROM employees
+    WHERE gender = 'F'
+    ORDER BY hire_date desc
+    LIMIT 10;
+
+SELECT first_name, last_name FROM employees
+    WHERE gender = 'F'
+    ORDER BY hire_date ASC
+    LIMIT 10;
+
+# what are the top three most common job titles?
+SELECT title, COUNT(*) FROM titles
+    GROUP BY title
+    ORDER BY COUNT(*) DESC
+    LIMIT 3;
+
+# what is the most common ‘from date’ for job titles? for staff only?
+SELECT from_date, COUNT(*) FROM titles
+    GROUP BY from_date
+    ORDER BY COUNT(*) DESC;
+
+SELECT from_date, COUNT(*) FROM titles
+    WHERE title = 'Staff'
+    GROUP BY from_date
+    ORDER BY COUNT(*) DESC;
