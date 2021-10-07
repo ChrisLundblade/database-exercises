@@ -58,6 +58,7 @@ SELECT * FROM persons;
 
 SELECT first_name, name AS 'favorite album' FROM persons JOIN albums ON persons.album_id = albums.id;
 
+#This is an associative/junction table
 CREATE TABLE preferences (
                              person_id INT UNSIGNED NOT NULL,
                              album_id INT UNSIGNED NOT NULL,
